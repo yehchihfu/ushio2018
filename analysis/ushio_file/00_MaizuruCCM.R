@@ -5,6 +5,7 @@
 ####
 
 # Load config
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("config.R")
 
 # Load functions

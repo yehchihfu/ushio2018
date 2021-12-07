@@ -1,0 +1,28 @@
+BlockLNLP               C++ compiled object for multivariate
+                        forecasting.
+LNLP                    C++ compiled object for univariate forecasting.
+Rcpp_BlockLNLP-class    S4 class for Rcpp compiled object, "BlockLNLP"
+Rcpp_LNLP-class         S4 class for Rcpp compiled object, "LNLP"
+Rcpp_Xmap-class         S4 class for Rcpp compiled object, "Xmap"
+Xmap                    C++ compiled object for convergent cross
+                        mapping.
+block_3sp               Time series for a three-species coupled model.
+block_lnlp              Perform generalized forecasting using simplex
+                        projection or s-map
+ccm                     Perform convergent cross mapping using simplex
+                        projection
+ccm_means               Take output from ccm and compute means as a
+                        function of library size.
+paramecium_didinium     Time series for the Paramecium-Didinium
+                        laboratory experiment
+rEDM-package            Applications of empirical dynamic modeling from
+                        time series.
+s_map                   Perform univariate forecasting using simplex
+                        projection
+sardine_anchovy_sst     Time series for the California Current
+                        Anchovy-Sardine-SST system
+simplex                 Perform univariate forecasting using simplex
+                        projection
+sockeye_returns         Time series for sockeye salmon returns.
+tentmap_1d              Time series for a tent map with mu = 2.
+two_species_model       Time series for a two-species coupled model.
