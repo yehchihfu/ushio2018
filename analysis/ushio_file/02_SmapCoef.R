@@ -5,8 +5,8 @@
 ####
 
 # Load config
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("config.R")
-
 # Save output of analysis in .RData file
 kSaveOutput <- T
 
@@ -19,6 +19,10 @@ dir.create(kOutDir.02, showWarnings = FALSE)
 library(rEDM)
 library(tseriesChaos)
 library(pforeach)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(plotly)
 
 # Load functions
 source("functions/Functions_1_HelperFuncs.R")
@@ -29,7 +33,7 @@ ws.out1 <- file.path(kOutDir.01, paste0("01_ExtractCausality", config$kBestE.Ran
 load(ws.out1)
 ws.out2 <- file.path(kOutDir.02, paste0("02_SmapCoef", config$kBestE.RangeStr, "_out.RData"))
 
-# Rearreange the order of xmap_from and xmap_to
+# Rearrange the order of xmap_from and xmap_to
 new.nums <- num.for.smapc
 for (i in 1:length(d.name)) {
   num.tmp <- num.for.smapc[num.for.smapc$xmap_from == i,]
@@ -38,21 +42,70 @@ for (i in 1:length(d.name)) {
   new.nums[as.numeric(rownames(num.tmp)),] <- rbind(tmp1, tmp2)
 }
 
+
+
 # Quantify interaction strengths among the fish community
 smapc.res <- SmapCFunc(new.nums, smapc.tp = 1, stats.output = T,
                        embedding = "best_E", original.data = biw.data)
 smapc.tp1 <- smapc.res$coefs
-smapc1 <- smapc.tp1[,-1]
-smapc.tp1.m0 <- as.data.frame(matrix(colMeans(smapc1, na.rm = T), ncol = 1))
-rownames(smapc.tp1.m0) <- colnames(smapc1)
 
-smapc.tp1.m0$include <- smapc.tp1.m0[, 1]
-for (i in 1:nrow(smapc.tp1.m0)) {
-  if (substr(rownames(smapc.tp1.m0)[i], 1, 9) == "const_for") {
-    smapc.tp1.m0$include[i] <- NA
+int_extract <- function (smapc.tp1) {
+
+
+  lag = function(str) {
+    substr(str, 12, 14) == "lag"
   }
+  constant = function(str) {
+    substr(str, 1, 9) == "const_for"
+  }
+  extract_from = function (str) {
+    str_replace(str, "[a-z_]+([0-9]+)[a-z_]+[0-9]+", "\\1") %>% as.numeric()
+  }
+  extract_to = function (str){
+    str_replace(str, "[a-z_]+[0-9]+[a-z_]+([0-9]+)", "\\1") %>% as.numeric()
+  }
+
+
+  smapc.tp1 %>%
+    as_tibble()%>%
+    select(-1) %>%
+    mutate(time = 1:nrow( smapc.tp1))%>%
+    pivot_longer(!time, names_to = "sp_pair", values_to = "strength" ) %>%
+    filter(!lag(sp_pair)) %>%
+    filter(!constant(sp_pair))%>%
+    mutate (from = extract_from(sp_pair), to = extract_to(sp_pair)) %>%
+    select(-2) %>%
+    filter(!from==to) %>%
+    mutate (species_to_species = str_c ( d.name[from],   d.name[to], sep = " -> "))%>%
+    group_by(species_to_species)%>%
+    mutate(mean_strength = mean(na.omit(strength))) %>%
+    ungroup() %>%
+    arrange(mean_strength)
+
 }
-smapc.tp1.m <- na.omit(smapc.tp1.m0)
+
+int_time_series <- int_extract(smapc.tp1)
+
+int_time_series %>%
+  group_by(species_to_species)
+
+plot_ly(int_time_series, x =~time , y = ~strength, z =~species_to_species ) %>%
+  group_by(species_to_species) %>%
+  add_lines(color = ~species_to_species)
+
+
+  smapc.tp1.m0 <- as.data.frame(matrix(colMeans(smapc1, na.rm = T), ncol = 1))
+  rownames(smapc.tp1.m0) <- colnames(smapc1)
+
+  smapc.tp1.m0$include <- smapc.tp1.m0[, 1]
+  for (i in 1:nrow(smapc.tp1.m0)) {
+    if (substr(rownames(smapc.tp1.m0)[i], 1, 9) == "const_for") {
+      smapc.tp1.m0$include[i] <- NA
+    }
+  }
+  smapc.tp1.m <- na.omit(smapc.tp1.m0)
+
+
 
 
 # Add lag effects
