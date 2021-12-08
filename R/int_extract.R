@@ -1,3 +1,11 @@
+#' Extract significant interspecific interaction from from Smap_coef function
+#'
+#' @param smapc.tp1 dataframe of smap coeff calculate from Functions_2_SmapCoefPara.R across samping time
+#' @return tibble file contains significant inerspecific interaction time seriees
+#' @import dplyr
+#' @export
+#'
+
 int_extract <- function (smapc.tp1) {
 
 
@@ -30,5 +38,4 @@ int_extract <- function (smapc.tp1) {
     mutate(mean_strength = mean(na.omit(strength))) %>%
     ungroup() %>%
     arrange(mean_strength)
-
 }
