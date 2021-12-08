@@ -11,27 +11,28 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 # Please put your title here to include it in the file below.
-Title <- "Title of your paper goes here"
+Title <- "Replication of figure two from Ushio paper"
 ```
 
 # ushio2018
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/yehchihfu/ushio2018/master?urlpath=rstudio)
 
-This repository contains the data and code for our paper:
+This repository contains the data and code to replicate the figure 2 in Ushio paper:
 
-> Authors, (YYYY). _`r Title`_. Name of journal/book <https://doi.org/xxx/xxx>
+> Ushio, M., sieh, Ch., Masuda, R. et al., (2018). _`r Title`_. Nature <https://doi.org/10.1038/nature25504>
 
 Our pre-print is online here:
 
-> Authors, (YYYY). _`r Title`_. Name of journal/book, Accessed `r format(Sys.Date(), "%d %b %Y")`. Online at <https://doi.org/xxx/xxx>
+> Ushio, M., sieh, Ch., Masuda, R. et al., (2018). _`r Title`_. Nature, Accessed `r format(Sys.Date(), "%d %b %Y")`. Online at <https://doi.org/10.1038/nature25504>
+
 
 
 ### How to cite
 
 Please cite this compendium as:
 
-> Authors, (`r format(Sys.Date(), "%Y")`). _Compendium of R code and data for `r Title`_. Accessed `r format(Sys.Date(), "%d %b %Y")`. Online at <https://doi.org/xxx/xxx>
+> Morrison, M., Serrano-Rojas, J., Chihfu, (`r format(Sys.Date(), "%Y")`). _Compendium of R code and data for `r Title`_. Accessed `r format(Sys.Date(), "%d %b %Y")`. Online at <https://doi.org/xxx/xxx>
 
 ## Contents
 
