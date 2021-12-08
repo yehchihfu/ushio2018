@@ -1,0 +1,27 @@
+Package: rEDM
+Type: Package
+Title: Applications of empirical dynamic modeling (EDM) from time
+        series.
+Version: 0.2.4
+Date: 2013-11-26
+Author: Hao Ye <hye@ucsd.edu>
+Maintainer: Hao Ye <hye@ucsd.edu>
+Description: The rEDM package contains C++ compiled objects that use time delay embedding to perform state-space reconstruction and nonlinear forecasting and an R interface to those objects using Rcpp. It supports both the simplex projection (Sugihara 1990) and s-map forecasting algorithms (Sugihara 1994), with implementations of convergent cross mapping (Sugihara 2012).
+License: GPL-3 | file LICENSE
+NeedsCompilation: yes
+Suggests: testthat
+Imports: Rcpp (>= 0.11.2), methods
+LinkingTo: Rcpp
+RcppModules: lnlp_module, block_lnlp_module, ccm_module
+Roxygen: list(wrap = TRUE)
+RemoteType: github
+RemoteHost: api.github.com
+RemoteRepo: rEDM
+RemoteUsername: ha0ye
+RemoteRef: master
+RemoteSha: 7145c10e56d14378a09fb6dbd21bad21a843af1a
+GithubRepo: rEDM
+GithubUsername: ha0ye
+GithubRef: master
+GithubSHA1: 7145c10e56d14378a09fb6dbd21bad21a843af1a
+Built: R 3.2.0; x86_64-apple-darwin13.4.0; 2015-04-24 01:31:29 UTC; unix
