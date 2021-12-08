@@ -1,7 +1,7 @@
 ####
 #### R code for Ushio et al.
 #### "Fluctuating interaction network and time-varying stability of a natural fish community"
-#### No.2 Caluculate S-map Coefficients
+#### No.2 Calculate S-map Coefficients
 ####
 
 # Load config
@@ -83,8 +83,11 @@ int_extract <- function (smapc.tp1) {
     arrange(mean_strength)
 
 }
-
 int_time_series <- int_extract(smapc.tp1)
+level <- unique(int_time_series$species_to_species)%>% as.character() %>% unlist()
+int_time_series$species_to_species <- as.factor(int_time_series$species_to_species, ordered = T, levels = level)
+
+
 
 int_time_series %>%
   group_by(species_to_species)
