@@ -1,17 +1,21 @@
 ---
-title: "Title Goes Here"
+title: "Replication of Figure 2: Time-varying interspecific interactions in a subset of the Maizuru fish community"
 author:
-  - Myfirstname Mylastname:
-      email: fl@oneplace.edu
-      institute: [UofO]
+  - Chih-Fu Yeh:
+      email: yehcf@stanford.edu
+      institute: Stanford University
       correspondence: true
-  - Yourfirstname Yourlastname:
-      email: fl@another.edu
-      institute: [UofA]
+  - Maike Morrison:
+      email: maikem@stanford.edu
+      institute: Stanford University
+      correspondence: false
+  - Shirley SerranoRojas:
+      email: serranoj@stanford.edu
+      institute: Stanford University
       correspondence: false
 institute:
-  - UofO: University of One Place
-  - UofA: University of Another Place
+  - Stanford University
+
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
     bookdown::word_document2:
@@ -24,9 +28,12 @@ output:
 bibliography: references.bib
 csl: "../templates/journal-of-archaeological-science.csl" # Insert path for the bib-style
 abstract: |
-  Text of abstract
+  Ecological theory suggests that large-scale patterns such as community stability can be influenced by changes in interspecific interactions that arise from the behavioural and/or physiological responses of individual species varying over time. Although this theory has experimental support, evidence from natural ecosystems is lacking. Here, using tools for analysing nonlinear time series and a 12-year-long dataset of fortnightly collected observations on a natural marine fish community in Maizuru Bay, Japan, the show that short-term changes in interaction networks influence overall community dynamics. Figure 2 shows that interactions in the Maizuru Bay fish community are not static; this contradicts a common assumption of ecological research. Instead, they change over time, as expected for a system with nonlinear dynamics. Of the 14 interspecific interactions, on average 8 are negative and 6 are positive. ...
+  
+  
+  
 keywords: |
-  keyword 1; keyword 2; keyword 3
+  Interaction networks; seasonal patterns; keyword 3
 highlights: |
   These are the highlights. 
 ---
