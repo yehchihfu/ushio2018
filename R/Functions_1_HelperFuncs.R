@@ -1,10 +1,13 @@
-####
-#### R code for Ushio et al.
-#### "Fluctuating interaction network and time-varying stability of a natural fish community"
-#### No.S1 Helper functions
-####
-
-# Check best embedding dimension
+#' Title
+#'
+#' @param time.series
+#' @param E
+#' @param save.raw.data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 BestErEDM <- function(time.series,
                       E        = 1:30,
                       save.raw.data = F) {
@@ -19,6 +22,14 @@ BestErEDM <- function(time.series,
 }
 
 # For organizing output
+#' Title
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 CombineNames <- function(data) {
   data$from_to_names <- NA
   for (i in 1:nrow(data)) {
@@ -33,6 +44,16 @@ CombineNames <- function(data) {
 
 
 # Network plot
+#' Title
+#'
+#' @param data
+#' @param smapc.data
+#' @param threshold
+#'
+#' @return
+#' @export
+#'
+#' @examples
 PlotNetwork <- function(data, smapc.data, threshold = 0) {
   seg.sizes <- abs(smapc.data)
   smapc.col <- smapc.col.tmp <- smapc.data
@@ -60,6 +81,14 @@ PlotNetwork <- function(data, smapc.data, threshold = 0) {
 
 
 # matrix functions
+#' Title
+#'
+#' @param num_data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 MakeSmapcMatrix <- function(num_data) {
   mat.data <- matrix(rep(NA, length(d.name) ^ 2), ncol = length(d.name))
   for (i in 1:NROW(num_data)) {
@@ -75,6 +104,15 @@ MakeSmapcMatrix <- function(num_data) {
 }
 
 
+#' Title
+#'
+#' @param num.data.smapc
+#' @param is.values
+#'
+#' @return
+#' @export
+#'
+#' @examples
 MakeSmapcMatrix2 <- function(num.data.smapc, is.values) {
   if (any(is.na(is.values))) {
     return(NA)
@@ -100,6 +138,14 @@ MakeSmapcMatrix2 <- function(num.data.smapc, is.values) {
 }
 
 
+#' Title
+#'
+#' @param num_data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 MakeSmapcMatrix3 <- function(num_data) {
   sub.name <- d.name[selected.spp]
   mat.data <- matrix(rep(NA, length(sub.name) ^ 2), ncol = length(sub.name))
@@ -118,6 +164,17 @@ MakeSmapcMatrix3 <- function(num_data) {
 }
 
 
+#' Title
+#'
+#' @param smapc.data
+#' @param lag.i
+#' @param k
+#' @param smapc.Lag.data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 ComputeJi <-
   function(smapc.data, lag.i, k, smapc.Lag.data = smapc.Lag) {
     ji <- matrix(rep(NA, length(d.name) ^ 2), ncol = length(d.name))
@@ -139,6 +196,15 @@ ComputeJi <-
   }
 
 # Functions for CCM of the dynamic stability
+#' Title
+#'
+#' @param x
+#' @param y
+#'
+#' @return
+#' @export
+#'
+#' @examples
 CcmStability <- function(x, y){
   block0 <- cbind(x, y)
   block <- na.omit(block0)[,1:2]
@@ -166,6 +232,14 @@ CcmStability <- function(x, y){
   return(result)
 }
 
+#' Title
+#'
+#' @param stability.ccm.res
+#'
+#' @return
+#' @export
+#'
+#' @examples
 PlotStabilityCCM <- function(stability.ccm.res){
   plot(stability.ccm.res$ccm_res$lib_size,
        stability.ccm.res$ccm_res$rho,
@@ -184,25 +258,34 @@ PlotStabilityCCM <- function(stability.ccm.res){
 
 
 # Function for multivariate S-map for the dynamic stability
+#' Title
+#'
+#' @param effect.ts
+#' @param cause.ts
+#'
+#' @return
+#' @export
+#'
+#' @examples
 StabilitySmap <- function(effect.ts, cause.ts){
   y0 <- as.numeric(scale(effect.ts))
   if(length(cause.ts)>1) x0 <- apply(cause.ts, 2, function(x) as.numeric(scale(x)))
   if(length(cause.ts)<2) x0 <- as.numeric(scale(ds[,cause.ts]))
   block_0 <- cbind(y0, x0)
   Ey <- BestErEDM(y0, E = config$kBestE.Range)
-  
+
   #### Add sufficient dimensions
   eE <- Ey - ncol(block_0) + 1
   NaN.mat <- matrix(rep(NaN, (eE - 1)*eE), ncol = eE)
   embed.ts <- rbind(NaN.mat, embed(y0, eE))
   block <- cbind(block_0, embed.ts[,2:eE])
   block <- na.omit(block)
-  
+
   #### Do S-map
   # determine the best theta
   th.test <- block_lnlp(block, method="s-map", tp=1, theta=seq(0,10,by=0.1), silent=T, num_neighbors=0)
   best.th <- th.test[which.min(th.test$mae),'theta']
-  
+
   #### Perform multivariate S-map to quantify interaction strength
   smapc.output <- block_lnlp(block,
                            method="s-map",

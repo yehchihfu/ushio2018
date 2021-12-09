@@ -1,12 +1,12 @@
-####
-#### R code for Ushio et al.
-#### "Fluctuating interaction network and time-varying stability of a natural fish community"
-#### No.S2 Functions for calculating S-map coefficients
-####
-
-# Function that calculates s-map coefficient
-
-# create custom lagged embedding
+#' Title
+#'
+#' @param ts
+#' @param dim
+#'
+#' @return
+#' @export
+#'
+#' @examples
 Embed2 <- function(ts, dim) {
   embed.c1 <- data.frame(lag0 = ts)
   if (dim > 1) {
@@ -22,6 +22,18 @@ Embed2 <- function(ts, dim) {
 }
 
 # SmapCoef for the converged pairs
+#' Title
+#'
+#' @param smapc.num.data
+#' @param smapc.tp
+#' @param embedding
+#' @param stats.output
+#' @param original.data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 SmapCFunc <- function(smapc.num.data,
                          smapc.tp     = 1,
                          embedding    = "min_multivariate",  # or "best_E"

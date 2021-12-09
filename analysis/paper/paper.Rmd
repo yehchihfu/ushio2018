@@ -14,7 +14,7 @@ author:
       institute: Stanford University
       correspondence: false
 institute:
-  - Stanford University
+  - Stanford University: Ecology and Evolution, Department of Biology, Stanford University, USA
 
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -58,29 +58,55 @@ knitr::opts_chunk$set(
   fig.path = "../figures/",
   dpi = 300
 )
+
+library(ushio2018)
+library(plotly)
+library(reticulate)
+library(tidyverse)
+library(pforeach)
+
 ```
 
 <!-- The actual document text starts here: -->
 
 # Introduction
 
+
+
 Here is a citation [@Marwick2017]
 
-# Background
 
 # Methods
+
+Long-term time-series data of the fish community were obtained by underwater direct visual census conducted approximately once every two weeks along the coast of the Maizuru Fishery Research Station of Kyoto University (Nagahama, Maizuru: 35° 28′ N, 135° 22′ E) from 1 January 2002 to 2 April 2014 (285 time points during approximately 12 years). This high-frequency census enables the detection of short-term interspecific interactions.
+
+## Reproducibility
+
+The data and code used in this analysis were packaged as a research compendium (R package `rrtools`) [@marwickPackagingDataAnalytical2018; @rrtools2019]. The research compendium was written as an R package so other researchers can read, run, and modify the methods described here.
+
 
 # Results
 
 <!-- Here's some example analysis code: -->
 
-```{r get-data, eval = FALSE}
+```{r }
 # Note the path that we need to use to access our data files when rendering this document
-my_data <- read.csv(here::here('analysis/data/raw_data/my_csv_file.csv'))
+biw.data <- read.csv(here::here("analysis/data/raw_data/Maizuru_dominant_sp.csv"))
+d_bestE0 <- read.csv(here::here("analysis/data/raw_data/Maizuru_ccm_res.csv"))
 ```
 
-```{r demo-plot, fig.cap="A plot of random numbers"}
-plot(rnorm(10))
+## Extract causality and interactions
+
+```{r }
+num.for.smapc <- extract_causality (d_bestE0)
+d.name   <- names(biw.data)[4:18]
+new.nums<- arrange_interactions(num.for.smapc)
+smapc.res <- SmapCFunc(new.nums, smapc.tp = 1, stats.output = T,
+                       embedding = "best_E", original.data = biw.data)
+smapc.tp1 <- smapc.res$coefs
+interaction_extract <- int_extract(smapc.tp1)
+plot_obj <- plot_time_3d(interaction_extract )
+save_image(plot_obj , file = "analysis/figures/image.png", width= 1200, height = 800,scale  =3)
 ```
 
 Figure \@ref(fig:demo-plot) shows how we can have a caption and cross-reference for a plot
