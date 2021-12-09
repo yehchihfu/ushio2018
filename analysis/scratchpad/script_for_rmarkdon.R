@@ -1,6 +1,6 @@
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 getwd()
-setwd("..")
+setwd("../..")
 biw.data <- read.csv("analysis/data/raw_data/Maizuru_dominant_sp.csv")
 d.bestE.0 <- read.csv("analysis/data/raw_data/Maizuru_ccm_res.csv")
 source("R/Functions_1_HelperFuncs.R")
