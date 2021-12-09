@@ -1,7 +1,6 @@
 # plot_time_3d -----------------------------
 #' Generate a plot of species interactions over time
 #' @param int_time_series A data frame is the output of the function `int_extract` with columns `species_to_species` (characters naming species interaction) `time` (observations of time points), and `strength` (the strength of the species interaction).
-#' @import plotly
 #' @return A plot_ly 3D object
 plot_time_3d <- function(int_time_series){
   level <- unique(int_time_series$species_to_species)
