@@ -18,4 +18,5 @@ extract_causality <- function(d_bestE0) {
   d_bestE %>%
     select(c(14,15,1))%>%
     rename('best_E'= 'ccm_values.E')
+
 }
