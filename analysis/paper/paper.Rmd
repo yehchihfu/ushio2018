@@ -1,6 +1,5 @@
 ---
 title: "Replication of Figure 2: Time-varying interspecific interactions in a subset of the Maizuru fish community"
-title: "Reproducing Ushio 2018"
 author:
   - Chih-Fu Yeh:
       email: yehcf@stanford.edu
