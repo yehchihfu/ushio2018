@@ -1,6 +1,6 @@
 #' extract_causality
-#'
-#' @param d_bestE0 dataframe with...
+#' Extract significant causal interaction fom the raw data file (Maizuru_ccm_res.csv)
+#' @param d_bestE0 dataframe Maizuru_ccm_res.csv
 #' @return a dataframe with significant intraspecific and interespecific interactions
 #' @import dplyr
 #' @export
