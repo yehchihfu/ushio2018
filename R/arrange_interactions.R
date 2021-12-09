@@ -10,5 +10,6 @@ arrange_interactions <- function(num.for.smapc) {
     mutate(new_order = ifelse(xmap_from == xmap_to, 0, xmap_to) ) %>%
     arrange(xmap_from,new_order) %>%
     ungroup %>%
-    select(-new_order)
+    select(-new_order)%>%
+    as.data.frame()
 }
