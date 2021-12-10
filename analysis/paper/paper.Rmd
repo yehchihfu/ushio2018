@@ -69,10 +69,7 @@ library(tidyverse)
 
 The dynamics of ecological communities are influenced by interspecific interactions occurring at multiple temporal and spatial scales. Earlier studies have focused mainly on long-term effects [@kondoh2003; @mougi2012; @reynolds2013; @allesina2015]. However, more recent theoretical and experimental studies have revealed that temporally variable ecological and/or biological responses (including physiological and behavioural responses) can have considerable effects on community dynamics [@kondoh2003; @gratton2003]. In this paper, they look instead at a measure that accounts for nonlinear dynamics and that tracks community stability as it varies through time. Relating fluctuating interaction networks to community stability is crucial for understanding how natural ecological communities are maintained.
 
-
 This is a replication of figure 2A from [@ushio2018]
-
-
 
 # Methods
 
