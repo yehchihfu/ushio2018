@@ -8,15 +8,19 @@
 This repository contains the data and code to replicate the figure 2 in
 Ushio paper:
 
-> Ushio, M., sieh, Ch., Masuda, R. et al., (2018). *Replication of
-> figure two from Ushio paper*. Nature
-> <https://doi.org/10.1038/nature25504>
+> Ushio, M., sieh, Ch., Masuda, R. et al., (2018). *Fluctuating
+> interaction network and time-varying stability of a natural fish
+> community*. Nature <https://doi.org/10.1038/nature25504>
+
+This repository is the final project for Chih-Fu Yeh, Jenni Serrano
+Rojas, and Maike Morrison for the Just Enough Software Engineering Mini
+Course.
 
 <!-- Our pre-print is online here: -->
-<!-- > Ushio, M., sieh, Ch., Masuda, R. et al., (2018). _Replication of figure two from Ushio paper_. Nature, Accessed 10 Dec 2021. Online at <https://doi.org/10.1038/nature25504> -->
+<!-- > Ushio, M., sieh, Ch., Masuda, R. et al., (2018). _Fluctuating interaction network and time-varying stability of a natural fish community_. Nature, Accessed 10 Dec 2021. Online at <https://doi.org/10.1038/nature25504> -->
 <!-- ### How to cite -->
 <!-- Please cite this compendium as: -->
-<!-- > Morrison, M., Serrano-Rojas, J., Chihfu, (2021). _Compendium of R code and data for Replication of figure two from Ushio paper_. Accessed 10 Dec 2021. Online at <https://doi.org/xxx/xxx> -->
+<!-- > Morrison, M., Serrano-Rojas, J., Chihfu, (2021). _Compendium of R code and data for Fluctuating interaction network and time-varying stability of a natural fish community_. Accessed 10 Dec 2021. Online at <https://doi.org/xxx/xxx> -->
 
 ## Contents
 

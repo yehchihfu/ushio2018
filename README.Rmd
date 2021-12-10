@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 # Please put your title here to include it in the file below.
-Title <- "Replication of figure two from Ushio paper"
+Title <- "Fluctuating interaction network and time-varying stability of a natural fish community"
 ```
 
 # ushio2018
@@ -21,6 +21,8 @@ Title <- "Replication of figure two from Ushio paper"
 This repository contains the data and code to replicate the figure 2 in Ushio paper:
 
 > Ushio, M., sieh, Ch., Masuda, R. et al., (2018). _`r Title`_. Nature <https://doi.org/10.1038/nature25504>
+
+This repository is the final project for Chih-Fu Yeh, Jenni Serrano Rojas, and Maike Morrison for the Just Enough Software Engineering Mini Course.
 
 <!-- Our pre-print is online here: -->
 
