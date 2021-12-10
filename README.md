@@ -8,7 +8,7 @@
 This repository contains the data and code to replicate the figure 2 in
 Ushio paper:
 
-> Ushio, M., sieh, Ch., Masuda, R. et al., (2018). *Fluctuating
+> Ushio, M., Hsieh, C., Masuda, R. et al., (2018). *Fluctuating
 > interaction network and time-varying stability of a natural fish
 > community*. Nature <https://doi.org/10.1038/nature25504>
 
@@ -34,10 +34,11 @@ The **analysis** directory contains:
 -   [:file_folder: data](/analysis/data): Data used in the analysis.
 -   [:file_folder: figures](/analysis/figures): Plots and other
     illustrations
--   [:file_folder:
-    supplementary-materials](/analysis/supplementary-materials):
-    Supplementary materials including notes and other documents prepared
-    and collected during the analysis.
+
+<!-- - [:file\_folder: -->
+<!--   supplementary-materials](/analysis/supplementary-materials): -->
+<!--   Supplementary materials including notes and other documents -->
+<!--   prepared and collected during the analysis. -->
 
 <!-- ## How to run in your browser or download and run locally -->
 <!-- This research compendium has been developed using the statistical programming -->
