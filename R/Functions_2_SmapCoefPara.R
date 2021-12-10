@@ -88,22 +88,22 @@ SmapCFunc <- function(smapc.num.data,
       # Determine the best theta
       theta.examined <- seq(0, 10, by = 0.1)
       th.test <-
-        pforeach(
+        pforeach::pforeach(
           i      = theta.examined,
           .c     = rbind,
           .cores = config$kMaxCore,
           .seed  = config$kRndSeed
         )({
-          th.test0 <- block_lnlp(block, method = "s-map", tp = smapc.tp,
-                                theta  = i, silent = T, num_neighbors = 0)
+          th.test0 <- rEDM::block_lnlp(block, method = "s-map", tp = smapc.tp,
+                                       theta  = i, silent = T, num_neighbors = 0)
         })
 
       best.th <- th.test[th.test$mae == min(th.test$mae), 'theta']
 
       # Perform multivariate S-map to quantify interaction strengths
-      smapc.res <- block_lnlp(block, method = "s-map", tp = smapc.tp,
-                              theta  = best.th, num_neighbors = 0, silent = T,
-                              save_smap_coefficients = T)
+      smapc.res <- rEDM::block_lnlp(block, method = "s-map", tp = smapc.tp,
+                                    theta  = best.th, num_neighbors = 0, silent = T,
+                                    save_smap_coefficients = T)
       smapc.tmp <- smapc.res[[1]]$smap_coefficients
       smapc.tmp <- as.data.frame(smapc.tmp)
 
