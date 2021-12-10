@@ -9,7 +9,7 @@ Imports:
     bookdown,
     here,
     pforeach,
-    rEDM,
+    rEDM (<= 0.4.4),
     reticulate
 Suggests: 
     devtools,
