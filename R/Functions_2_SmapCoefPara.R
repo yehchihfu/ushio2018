@@ -135,7 +135,7 @@ SmapCFunc <- function(smapc.num.data,
     }
 
     t.used <- proc.time() - t.begin
-    cat("Process ", i, "/", NROW(smapc.num.data), "completed:", t.used[3], "sec\n")
+    #cat("Process ", i, "/", NROW(smapc.num.data), "completed:", t.used[3], "sec\n")
   }
   if (stats.output) {
     sc.stat <- na.omit(sc.stat)
