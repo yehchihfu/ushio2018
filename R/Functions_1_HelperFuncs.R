@@ -283,17 +283,17 @@ StabilitySmap <- function(effect.ts, cause.ts){
 
   #### Do S-map
   # determine the best theta
-  th.test <- block_lnlp(block, method="s-map", tp=1, theta=seq(0,10,by=0.1), silent=T, num_neighbors=0)
+  th.test <- rEDM::block_lnlp(block, method="s-map", tp=1, theta=seq(0,10,by=0.1), silent=T, num_neighbors=0)
   best.th <- th.test[which.min(th.test$mae),'theta']
 
   #### Perform multivariate S-map to quantify interaction strength
-  smapc.output <- block_lnlp(block,
-                           method="s-map",
-                           tp=1,
-                           theta=best.th,
-                           num_neighbors=0,
-                           silent=T,
-                           save_smap_coefficients=T)
+  smapc.output <- rEDM::block_lnlpblock_lnlp(block,
+                                             method="s-map",
+                                             tp=1,
+                                             theta=best.th,
+                                             num_neighbors=0,
+                                             silent=T,
+                                             save_smap_coefficients=T)
   return(smapc.output)
 }
 

@@ -18,7 +18,7 @@ institute:
 
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
-    bookdown::word_document2:
+   bookdown::word_document2:
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
       pandoc_args:
@@ -48,7 +48,7 @@ Highlights: `r rmarkdown::metadata$highlights`
 
 <!-- The following code chunk defines some general settings how code chunks should behave. -->
 
-```{r setup, echo = FALSE}
+```{r setup, echo=FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
@@ -60,11 +60,7 @@ knitr::opts_chunk$set(
 )
 
 library(ushio2018)
-library(plotly)
-library(reticulate)
 library(tidyverse)
-library(pforeach)
-
 ```
 
 <!-- The actual document text starts here: -->
@@ -106,7 +102,15 @@ smapc.res <- SmapCFunc(new.nums, smapc.tp = 1, stats.output = T,
 smapc.tp1 <- smapc.res$coefs
 interaction_extract <- int_extract(smapc.tp1)
 plot_obj <- plot_time_3d(interaction_extract )
-save_image(plot_obj , file = "analysis/figures/image.png", width= 1200, height = 800,scale  =3)
+save_image(plot_obj, 
+           file = here::here("analysis/figures/image.png"), 
+           width= 1200, height = 800, scale = 3)
+```
+
+And here's a cross-reference to figure \@ref(fig:species-interactions).
+
+```{r species-interactions, fig.cap="Fix this caption later"}
+knitr::include_graphics(here::here("analysis/figures/image.png"))
 ```
 
 Figure \@ref(fig:demo-plot) shows how we can have a caption and cross-reference for a plot

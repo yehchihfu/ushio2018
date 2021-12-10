@@ -8,14 +8,16 @@ License: MIT + file LICENSE
 Imports: 
     bookdown,
     here,
+    pforeach,
+    rEDM,
     reticulate
 Suggests: 
     devtools,
     git2r,
     testthat (>= 3.0.0)
 ByteCompile: true
-Config/reticulate: list( packages = list( list(package = "kaleido", pip =
-    TRUE) ) )
+Config/reticulate: list( packages = list( list(package = "kaleido"),
+    list(package = "plotly")) )
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
