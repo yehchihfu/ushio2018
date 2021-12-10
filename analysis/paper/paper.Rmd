@@ -71,7 +71,6 @@ The dynamics of ecological communities are influenced by interspecific interacti
 
 Here is a citation [@Marwick2017]
 
-
 # Methods
 
 Long-term time-series data of the fish community were obtained by underwater direct visual census conducted approximately once every two weeks along the coast of the Maizuru Fishery Research Station of Kyoto University (Nagahama, Maizuru: 35° 28′ N, 135° 22′ E) from 1 January 2002 to 2 April 2014 (285 time points during approximately 12 years). This high-frequency census enables the detection of short-term interspecific interactions.
@@ -79,7 +78,6 @@ Long-term time-series data of the fish community were obtained by underwater dir
 ## Reproducibility
 
 The data and code used in this analysis were packaged as a research compendium (R package `rrtools`) [@marwickPackagingDataAnalytical2018; @rrtools2019]. The research compendium was written as an R package so other researchers can read, run, and modify the methods described here.
-
 
 # Results
 
@@ -104,23 +102,23 @@ interaction_extract <- int_extract(smapc.tp1)
 ```
 
 ## Figure 2
+
 ```{r }
 plot_obj <- plot_time_3d(interaction_extract )
-save_image(plot_obj, 
+plotly::save_image(plot_obj, 
            file = here::here("analysis/figures/image.png"), 
            width= 1200, height = 800, scale = 3)
 ```
 
 And here's a cross-reference to figure \@ref(fig:species-interactions).
 
-```{r species-interactions, fig.cap="Fix this caption later"}
+```{r species-interactions, fig.cap="Time-varying interspecific interactions in a subset of the Maizuru fish community."}
 knitr::include_graphics(here::here("analysis/figures/image.png"))
 ```
 
 # Conclusion
 
-Here we present a framework based on attractor reconstruction from observational time series that quantifies the dynamic nature of the community interaction network and provides an estimate of dynamic stability. Although the exact individual-level behaviour that gives rise to the interspecific effect cannot be addressed by this analysis, the analysis does enable quantitative identification of the essential interactions that influence community dynamics. Further applications of this framework to ecological time series in different geographical regions—for example, Arctic and tropical regions3—will enable tests of the generality of the present results, and aid in identifying other critical patterns in the dynamic stability of natural ecological communities. Such applications of empirical dynamic modelling could also clarify the relationships between interaction strengths, properties of the distribution (for example, the dominance of weak interactions, skewness and standard deviations), network structure (for example, arrangements and topologies) and community dynamics (such as the relationship between dynamic stability and population variation observed in this study), enabling a more in-depth investigation of the mechanisms by which dynamic interactions and species diversity govern the behaviour of a wide range of natural ecosystems.
-
+Here we present a framework based on attractor reconstruction from observational time series that quantifies the dynamic nature of the community interaction network and provides an estimate of dynamic stability. Although the exact individual-level behaviour that gives rise to the interspecific effect cannot be addressed by this analysis, the analysis does enable quantitative identification of the essential interactions that influence community dynamics. Further applications of this framework to ecological time series in different geographical regions---for example, Arctic and tropical regions3---will enable tests of the generality of the present results, and aid in identifying other critical patterns in the dynamic stability of natural ecological communities. Such applications of empirical dynamic modelling could also clarify the relationships between interaction strengths, properties of the distribution (for example, the dominance of weak interactions, skewness and standard deviations), network structure (for example, arrangements and topologies) and community dynamics (such as the relationship between dynamic stability and population variation observed in this study), enabling a more in-depth investigation of the mechanisms by which dynamic interactions and species diversity govern the behaviour of a wide range of natural ecosystems.
 
 # Acknowledgements
 
@@ -128,17 +126,18 @@ Here we present a framework based on attractor reconstruction from observational
 
 \newpage
 
-# References 
+# References
 
 <!-- The following line ensures the references appear here for the MS Word or HTML output files, rather than right at the end of the document (this will not work for PDF files):  -->
 
-<div id="refs"></div>
+::: {#refs}
+:::
 
 \newpage
 
 ### Colophon
 
-This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
+This report was generated on `r Sys.time()` using the following computational environment and dependencies:
 
 ```{r colophon, cache = FALSE}
 # which R packages and versions?
