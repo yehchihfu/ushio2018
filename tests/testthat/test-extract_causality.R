@@ -1,5 +1,4 @@
-context("test extract causality")
-library(dplyr)
+
 
 test_that("test that rows of output matched", {
   d_bestE0 <- read.csv(testthat::test_path("example_data", "Maizuru_ccm_res.csv"))
